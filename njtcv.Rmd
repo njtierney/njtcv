@@ -40,25 +40,34 @@ left-column:
       from: 2015
       to: 2018
       content: |
-        - Make it easy to get a bird's eye view of the data
+        - [visdat.njtierney.com](http://visdat.njtierney.com)
     - name: naniar
       info: Tidy approach for missing data
       from: 2016
       to: 2018
       content: |
-        - Tidy tools and visualisations for missing data
+        - [naniar.njtierney.com](http://naniar.njtierney.com)
   
-  - title: Papers
+  - title: Selected Papers
     icon: newspaper
     items:
       - name: "Using Decision Trees to Understand Structure in Missing Data."
         to: 2015
         content: | 
           - **Tierney, N.J.,** Mengersen, K., Harden, F., Harden M.  [_BMJ Open_ 5 (6).  doi:10.1136/bmjopen-2014-007450](http://bmjopen.bmj.com/content/5/6/e007450.full)
+      - name: "Visualisation and statistical modelling techniques for the management of inventory stock levels"
+        to: 2016
+        content: |
+          - [Sweatman, W.L., McGree, J., Carstens, C.J., Foster, K.J., Liu, S., **Tierney, N.J.,** Trednick, E., Zaitouny, A. _ANZIAM Journal_ 57, 130-162](https://journal.austms.org.au/ojs/index.php/ANZIAMJ/article/view/10225).
+      - name: "visdat: Visualising Whole Data Frames"
+        to: 2017
+        content: |
+          - [**Tierney, N.J.**, _The Journal of Open Source Software_ 2 (16) doi: 10.21105/joss.00355](http://joss.theoj.org/papers/10.21105/joss.00355)
       - name: "Expanding tidy data principles to facilitate missing data exploration, visualization and assessment of imputations."
         to: 2018
         content: |
-          - **Tierney, NJ.** Cook, D. _Journal of Computational and Graphical Statistics_. __Submitted__ [[Pre-print](https://arxiv.org/abs/1809.02264)]
+          - **Tierney, N.J.** Cook, D. _Journal of Computational and Graphical Statistics_. __Submitted__ [[Pre-print](https://arxiv.org/abs/1809.02264)]
+
         
   - title: Teaching Experience
     icon: chalkboard-teacher
@@ -71,13 +80,26 @@ left-column:
           - __Overall University Winner__ "The Joy of Stats" _Sessional Teaching and Reflection Showcase (STARS)_(Presentation).
           - __Vice-Chancellor's Performance Award__ for innovation in teaching in SEB113 ($2,500).
         
-  - title: Talks
+  - title: Selected Talks
     icon: microphone
     items:
-      - name: 
-        info:
-        location:
-        to:
+      - name: "Empowering people with community, software, and peer review"
+        info: "**RUCK: R Users Conference Korea (Invited Keynote speaker)**"
+        location: Seoul, Korea
+        to: 2018
+      - name: "Now you see it?  Now you don’t?  The role of graphics in identifying MCMC convergence (Awarded Runner up Pitman Prize for Young Statistician)"
+        info: "ISCB-ASC"
+        location: Melbourne, Australia
+        to: 2018
+        content: |
+          - [HTML](https://talks.updog.co/asc2018/talk-mcmclineup-keynote/index.html) [PDF](https://talks.updog.co/asc2018/pdf/talk-mcmclineup-keynote.pdf)
+      - name: "Find the best locations for facilities using `maxcovr`"
+        info: "UseR! 2018"
+        to: 2018
+        location: Brisbane, australia
+        content: |
+          - [Slides](https://talks.updog.co/user2018-maxcovr/user2018-maxcovr-talk.html#1) [YouTube](https://www.youtube.com/watch?v=sA8ItKmdwjM&t=3s)
+
 
 right-column:
 - title: Contact Info
