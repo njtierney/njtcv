@@ -6,7 +6,7 @@ output: pagedown::html_resume
 left-column:
   title:
     main: Nicholas Tierney
-    sub:  Research Fellow, Monash University, Australia
+    sub:  Research Fellow at Monash University, Australia
     content: |
       Constantly excited about #rstats
 
@@ -21,16 +21,16 @@ left-column:
       location: Brisbane, Australia
       from: 2008
       to: 2012
-      #content: >
-      #  Thesis: _"How Sharp is Sharp?: The Effect of Monocular Texture on Enhancing Sharpness."_ __Awarded first class honours__.
+      content: |
+          Thesis: _"How Sharp is Sharp?: The Effect of Monocular Texture on Enhancing Sharpness."_ __Awarded first class honours__.
 
     - name: Queensland University of Technology
       info: Doctor of Philosophy (Statistics)
       location: Brisbane, Australia
       from: 2013
       to: 2018
-      #content: 
-        #Thesis: 
+      content: |
+          Thesis: "Statistical Approaches to Revealing Structure in Complex Health Data" __Nominated for a Thesis Excellence Award.__
         
   - title: R packages
     icon:  laptop
@@ -67,7 +67,6 @@ left-column:
         to: 2018
         content: |
           - **Tierney, N.J.** Cook, D. _Journal of Computational and Graphical Statistics_. __Submitted__ [[Pre-print](https://arxiv.org/abs/1809.02264)]
-
         
   - title: Teaching Experience
     icon: chalkboard-teacher
