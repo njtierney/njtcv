@@ -3,3 +3,8 @@
 .RData
 .Ruserdata
 *.html
+vitae/fonts
+*.tex
+*.log
+*.bib
+*.cls
