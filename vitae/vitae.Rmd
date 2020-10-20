@@ -16,10 +16,6 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(vitae)
 ```
 
-# About Me
- 
-I develop tools with open source software to improve data analysis. My research covers the exploration of missing data methods, longitudinal modelling, location analysis and placing facilities, modelling geospatial cardiac risk.
-
 # Education
 
 ```{r education}
@@ -45,35 +41,14 @@ tribble(
   "broomstick", "2017 - ", "Lead developer", "Convert decision tree objects into tidy data frames",
   "ukpolice", "2018 - ", "Author", "Download Data on UK Police and Crime",
   "syn", "2018 - ", "Lead developer", "A zero dependency R package that lists synonyms and antonyms.",
-  "ishiara", "2020 - ", "Lead developer", "Generate colourblindness (Ishihara) plates in R",
+  "ishihara", "2020 - ", "Lead developer", "Generate colourblindness (Ishihara) plates in R",
 ) %>% 
   brief_entries(glue::glue("\\textbf{<pkg>}: <role> \\newline <details>", .open = "<", .close = ">"), when, .protect = FALSE)
 ```
 
+# Research
 
-# Awards
-
-```{r awards}
-tribble(
-  ~Year, ~Type, ~Desc,
-  2017, "PhD", "Thesis nominated for University Doctoral Outstanding Thesis Award.",
-  2013, "PhD", "APA ($24,500 Annually for 4 years)",
-  2013, "PhD", "IDTC Top Up ($10,000 Annually for 4 years)",
-  2015,  "Teaching", "Winner of Sessional Teaching and Reflection Showcase (STARS) talk 'The Joy of Stats'",
-  2015, "Teaching", "Vice-Chancellor's Performance Award__ for innovation in teaching in SEB113 ($2,500)",
-  2018, "Presenting", "EJC Pitman Prize (Runner Up), The Stastistical Society of Australia",
-  2018, "Grant", "A unified platform for missing values methods and workflows ($10,000 USD)",
-  2019, "Grant", "A unified platform for missing values methods and workflows (renewed from 2018 again) ($10,000 USD)",
-  2019, "Grant", "ACEMS International Mobility Programme ($10,000 AUD)"
-) %>% 
-  brief_entries(
-    glue::glue("Nobel Prize in {Type}"),
-    Year, 
-    Desc
-  )
-```
-
-# Publications
+## Selected Publications
 
 ```{r pubs}
 library(dplyr)
@@ -84,8 +59,8 @@ pubs <- scholar::get_publications("o4eVsQEAAAAJ&hl") %>%
             title = as.character(title),
             journaltitle = as.character(journal), 
             year, 
-            key = row_number()) %>% 
-  filter(key != 15) %>% 
+            key = row_number()) %>%
+  filter(!grepl("^CRAN Task", title)) %>% 
   mutate(journaltitle = case_when(key == 21 ~ "Honours Thesis",
                                   TRUE ~ journaltitle))
 
@@ -96,7 +71,24 @@ pubs %>%
 bibliography_entries("njtierney.bib")
 ```
 
-# Presentations
+## Papers in Preparation
+
+```{r}
+
+```
+
+
+- "brolgar: An R package to BRowse Over Longitudinal Data Graphically and Analytically in R", **Nicholas Tierney**, Dianne Cook, Tania Prvan
+- "Missing data in sports science: Current practice in football research and recommendations for reporting missingness", David Borg, **Nicholas Tierney**, Robbie Nguyen
+- "What we see in rainbows: The impact of different colour palettes on understanding weather maps" **Nicholas Tierney**, Lauren Kennedy, Adam Sparks
+- "The effect of fire frequency on insectivorous bats and their habitat in the monsoonal woodlands of Cape York Peninsula, Australia." Julie Broken-Brow, **Nicholas J. Tierney**, Sandra Penman, Kyle N. Armstrong, and Luke K.-P. Leung
+- The Missing Book, **Nicholas Tierney**, Allison Horst
+
+## Presentations
+
+```{r}
+
+```
 
 
 - [2020/06/26: "The use of colour in graphics: A journey through the body & mind to the screen"](https://njt-monash-colour.netlify.app/#1)
@@ -107,7 +99,6 @@ bibliography_entries("njtierney.bib")
 `2019` Exploring and understanding the individual experience from longitudinal data, or ... How to make better spaghetti (plots) (OzVis 2019, Brisbane (**Keynote speaker**)
 
 `2019` Exploring and understanding the individual experience from longitudinal data, or ... How to make better spaghetti (plots) (**Invited Seminar at ANU, Canberra**)
-
 
 `2018` [**RUCK: R Users Conference Korea (Invited Keynote speaker)** "Empowering people with community, software, and peer review".](https://talks.updog.co/korea-keynote/korea-keynote.html#1)
 
@@ -131,7 +122,7 @@ bibliography_entries("njtierney.bib")
 
 `2014` [**ASC / IMS Meeting** __Tierney, N.J.__,  Mengersen, K., Pitchforth, J. "Understanding Missing Data: The Use of Classification and Regression Trees, and Boosted Regression Trees", _Sydney, Australia_.](https://speakerdeck.com/njtierney/understanding-missing-data-the-use-of-classification-and-regression-trees-and-boosted-regression-trees)
 
-### Posters
+## Posters
 
 `2019` "A Missing Data Carol: Ghosts of Missing Data Past, Present, and Future". **Tierney, NJ** _rstudioconf2019, Austin, Texas, USA_ [PDF](https://talks.updog.co/2019-01-16-missing-data-past-present-future.pdf)
 
@@ -147,35 +138,45 @@ bibliography_entries("njtierney.bib")
 
 `2014` "Missingness, Mixtures, and Multiple Imputation" **Tierney, N.J.**, Mengersen, K., Harden, F., Harden, M. _Bayes on the Beach_.
 
-## Blog
+# Awards
 
-`2013-` I maintain a personal blog, [njtierney.com](https://www.njtierney.com), to share code and statistics, and to engage in dialogue with the statistics and r-programming communities.
+```{r awards}
+tribble(
+  ~Year, ~Type, ~Desc,
+  2017, "PhD", "Thesis nominated for University Doctoral Outstanding Thesis Award.",
+  2013, "PhD", "APA ($24,500 Annually for 4 years)",
+  2013, "PhD", "IDTC Top Up ($10,000 Annually for 4 years)",
+  2015,  "Teaching", "Winner of Sessional Teaching and Reflection Showcase (STARS) talk 'The Joy of Stats'",
+  2015, "Teaching", "Vice-Chancellor's Performance Award__ for innovation in teaching in SEB113 ($2,500)",
+  2018, "Presenting", "EJC Pitman Prize (Runner Up), The Stastistical Society of Australia",
+  2018, "Grant", "A unified platform for missing values methods and workflows ($10,000 USD)",
+  2019, "Grant", "A unified platform for missing values methods and workflows (renewed from 2018 again) ($10,000 USD)",
+  2019, "Grant", "ACEMS International Mobility Programme ($10,000 AUD)"
+) %>% 
+    brief_entries(Year, Type, Desc)
+```
 
 
-
-## Professional Experience
+# Professional Experience
 
 ## Invited Academic
 
-`2020` Berkeley Institute of Data Science (BIDS), Berkeley, California, USA, Feb 3 - Feb 3. Continued collaboration with Dr Karthik Ram on best practices for publishing data sources, and current technology issues in modern data science.
-
-`2019` Berkeley Institute of Data Science (BIDS), Berkeley, California, USA, Jan 24 - Feb 13. Continued collaboration with Dr Karthik Ram on best practices for publishing data sources, and current technology issues in modern data science.
+`2018-2010` Berkeley Institute of Data Science (BIDS), Berkeley, California, USA. I have visited annually for 1-3 weeks to collaborate with Dr Karthik Ram on best practices for publishing data sources, and current technology issues in modern data science.
 
 `2019` Johns Hopkins Bloomberg School of Public Health, Maryland, USA, Jan 2 - Jan 13. Collaboration with Prof. Roger Peng on approaches for understanding and measuring MCMC convergence and diagnostics.
 
-`2018` Berkeley Institute of Data Science (BIDS), Berkeley, California, USA, Feb 5 - Feb 9. Collaboration with Dr Karthik Ram on best practices for publishing data sources, and current technology issues in modern data science.
+`2016-17` Inter-Disciplinary Institute of Data Science at Università della Svizzera italiana (USI), Lugano, Switzerland. Collaboration with Professor Antonietta Mira of USI and Professor Angelo Auricchio of the Center for Computational Medicine in Cardiology (CCMC) on optimising placement of Automatic Electronic Defibrillators (AEDs) in Switzerland.
 
-`2017` Inter-Disciplinary Institute of Data Science at Università della Svizzera italiana (USI), Lugano, Switzerland, July 10 - July 14. Continuing Collaboration with Professor Antonietta Mira of USI and Professor Angelo Auricchio of the Center for Computational Medicine in Cardiology (CCMC) on optimising placement of Automatic Electronic Defibrillators (AEDs) in Switzerland.
+## Communication
 
-`2016` Inter-Disciplinary Institute of Data Science at Università della Svizzera italiana (USI), Lugano, Switzerland, June 18 - July 9. Collaboration with Professor Antonietta Mira of USI and Professor Angelo Auricchio of the Center for Computational Medicine in Cardiology (CCMC) on optimising placement of Automatic Electronic Defibrillators (AEDs) in Switzerland.
+`2013-` I maintain a personal blog, [njtierney.com](https://www.njtierney.com), to share code and statistics, and to engage in dialogue with the statistics and r-programming communities.
 
-### Science Communication
 
 `2016` ["Science Meets Parliament"](https://scienceandtechnologyaustralia.org.au/focus-on/science-meets-parliament-2016/), Canberra, Australia, __fully sponsored travel__ provided by [SSA](https://www.statsoc.org.au/). [Blog post write up of event](https://www.njtierney.com/post/2016/08/22/stats-meets-parliament/)
 
 `2013` ["Statistics for Journalists", _Australian Science Media Centre_ Brisbane, Australia](https://www.njtierney.com/post/2013/11/01/stats-for-journo/).
 
-### Conferences
+## Conferences
 
 `2019` Assistant Organiser of the fourth [rOpenSci Unconference in Australia](ozunconf19.ropensci.org).
 
@@ -187,7 +188,7 @@ bibliography_entries("njtierney.bib")
 
 `2016` Principal Organiser of the first [rOpenSci Unconference in Australia](auunconf.ropensci.org).
 
-### Statistics Society of Australia
+## Statistics Society of Australia
 
 `2017-2019` [SSA](https://www.statsoc.org.au/) General Committee Member for Victorian Branch of SSA.
 
@@ -195,13 +196,61 @@ bibliography_entries("njtierney.bib")
 
 `2013-16` [SSA](https://www.statsoc.org.au/) Young Statisticians Representative for Queensland.
 
-### Meeting Chair
+## Meeting Chair
 
 `2017-2019` Meeting Chair for [Non-Uniform Monash Business Analytics Team (NUMBAT), Monash](https://numbat.space/).
 
 `2014` Meeting Chair for [Bayesian Research and Applications Group (BRAG), QUT](https://bragqut.wordpress.com/).
 
-### Talks (Outside of conferences)
+# Teaching
+
+## ETC1010
+
+`2019-2020` "Introduction to Data, Modelling, and Computing". Lecturer. Revised content, developed new assignments, and written and practical exams.
+
+## SEB113
+
+`2015` "Statistical Methods for Science". Developed computer lab material with RMarkdown, produced instructional videos, and taught workshops. (**Won Vice Chancellors Award for Exceptional Teaching - $2500**)
+
+## Software Carpentry
+
+`2018-2019` Software carpentry instructor trainer. Involved in teaching best 
+  practices on how to teach software coding to other instructors.
+
+## DataCamp
+
+`2018` Developed online course on Handling Missing Data. Produced tutorials and
+  instructional videos.
+  
+## R markdown for scientists
+
+`2018 - ` A 3-4 hour workshop aimed at getting researchers up to speed with modern approaches to reproducible research with the Rmarkdown software + Rstudio. This course has been run six times in two states of Australia, and in Seattle, USA. Course materials are made completely free and open source online at: https://rmd4sci.njtierney.com/
+
+## Invited Tutorials
+
+`2018-19` ["Rmarkdown for scientists"](https://rmd4sci.njtierney.com/), (Delivered five times in Canberra and Melbourne since November 2018 - November 2019)
+
+`2018` [Missing Data Imputations, _UseR!2018_, Brisbane, Australia.](https://user2018.r-project.org/tutorials/)
+
+`2017` Reproducible Reporting Using RMarkdown and GitHub, _Angletr_, Anglet, France.
+
+`2015` Developing Bayesian Models for Ranking Academic Papers, _Bayes on the Beach_, Gold Coast, Australia.
+
+## Extra-Curricular
+
+### Climbing
+
+`2014-2019` Master of Ceremonies at State and National Climbing Championships.
+
+`2014-` Archivist of the UQ Mountain Club.
+
+`2015` Magazine Editor of the UQ Mountain Club.
+
+`2012,14` Executive Committee of the [University of Queensland Mountain Club (UQMC)](https://uqmc.org/).
+
+`2014` Appointed Honourary Life Member of the UQMC.
+
+
 
 # Technical skills
 
@@ -214,53 +263,3 @@ bibliography_entries("njtierney.bib")
 * Data Visualisation
 * Exploratory Data Analysis
 * Reproducible Reporting
-
-## Extra-Curricular
-
-### Climbing
-
-`2014-2019` Master of Ceremonies at State and National Climbing Championships.
-
-`2014-` Archivist of the UQMC.
-
-`2015` Magazine Editor of the UQMC.
-
-`2012,14` Executive Committee of the [University of Queensland Mountain Club (UQMC)](https://uqmc.org/).
-
-`2014` Appointed Honourary Life Member of the UQMC.
-
-
-
-## Teaching
-
-### ETC1010
-
-`2019-2020` "Introduction to Data, Modelling, and Computing". Lecturer. Revised content, developed new assignments, and written and practical exams.
-
-### SEB113
-
-`2015` "Statistical Methods for Science". Developed computer lab material with RMarkdown, produced instructional videos, and taught workshops.
-
-### Software Carpentry
-
-`2018-2019` Software carpentry instructor trainer. Involved in teaching best 
-  practices on how to teach software coding to other instructors.
-
-### DataCamp
-
-`2018` Developed online course on Handling Missing Data. Produced tutorials and
-  instructional videos.
-  
-### R markdown for scientists
-
-`2018 - 2019` A 3-4 hour workshop aimed at getting researchers up to speed with modern approaches to reproducible research with the Rmarkdown software + Rstudio. This course has been run five times in two states of Australia. Course materials are made completely free and open source online at: https://rmd4sci.njtierney.com/
-
-### Invited Tutorials
-
-`2018-19` ["Rmarkdown for scientists"](https://rmd4sci.njtierney.com/), (Delivered five times in Canberra and Melbourne since November 2018 - November 2019)
-
-`2018` [Missing Data Imputations, _UseR!2018_, Brisbane, Australia.](https://user2018.r-project.org/tutorials/)
-
-`2017` Reproducible Reporting Using RMarkdown and GitHub, _Angletr_, Anglet, France.
-
-`2015` Developing Bayesian Models for Ranking Academic Papers, _Bayes on the Beach_, Gold Coast, Australia.
