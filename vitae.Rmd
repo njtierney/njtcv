@@ -1,0 +1,160 @@
+---
+name: Nicholas
+surname: Tierney
+position: "Lecturer"
+address: "Department of Econometrics and Business Statistics"
+www: njtierney.com
+email: "nicholas.tierney@gmail.com"
+twitter: nj_tierney
+github: njtierney
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv
+csl: "csl/apa6-cv.csl"
+nocite: "@*"
+bibliography_articles: "bib/articles.bib"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+```{r loadd-drake, include = FALSE}
+library(drake)
+library(magrittr)
+loadd(awards)
+loadd(communication)
+loadd(education)
+loadd(employment)
+loadd(grants)
+loadd(memberships)
+loadd(publications)
+loadd(software)
+loadd(stars)
+loadd(service)
+loadd(invited_academic)
+loadd(paper_in_prep)
+loadd(posters)
+loadd(teaching)
+loadd(workshops)
+loadd(talks)
+```
+
+```{r setup-ref, include=FALSE}
+RefManageR::BibOptions(
+  check.entries = FALSE,
+  bib.style = "authoryear",
+  sorting = "ynt",
+  cite.style = "year",
+  style = "markdown",
+  hyperlink = TRUE,
+  dashed = FALSE
+)
+```
+
+# Eduction
+
+```{r print-education}
+education
+```
+
+# Software
+
+```{r print-software}
+software %>% # would be neat to add extra information on stars and downloads
+    brief_entries(what = glue("\\textbf{<what>}: <with> \\newline <why>", 
+                              .open = "<", 
+                              .close = ">"), 
+                  when = when, 
+                  .protect = FALSE)
+```
+
+# Research
+
+## Selected Publications
+
+```{r pubs}
+# pubs <- bibliography_entries("bib/articles.bib")
+# pubs
+```
+
+## Papers in Preparation
+
+```{r paper-in-prep}
+paper_in_prep
+```
+
+
+## Selected Presentations
+
+```{r talks}
+talks
+```
+
+## Posters
+
+```{r posters}
+posters
+```
+
+# Grants
+
+```{r grant}
+grants
+```
+
+# Awards
+
+```{r award}
+awards
+```
+
+# Service
+
+```{r service}
+service
+```
+
+# Professional Experience
+
+## Invited Academic
+
+```{r invited-academic}
+invited_academic
+```
+
+## Communication
+
+```{r communication}
+communication
+```
+
+# Teaching
+
+## University
+
+```{r teaching}
+teaching
+```
+
+## Workshops
+
+```{r workshops}
+workshops
+```
+
+
+\newpage
+
+# Technical skills
+
+* R
+* STATA
+* greta
+* LaTeX
+* Git + GitHub
+* Bayesian Statistics
+* Data Visualisation
+* Exploratory Data Analysis
+* Reproducible Reporting
