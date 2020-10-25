@@ -52,6 +52,5 @@ renv/
 fonts/
 *.tex
 *.log
-*.bib
 *.cls
 .DS_Store
