@@ -15,11 +15,8 @@ tidy_publications <- function() {
               author = as.character(author),
               title = as.character(title),
               journaltitle = as.character(journal), 
-              year, 
-              key = row_number()) %>%
-    filter(!grepl("^CRAN Task", title)) %>% 
-    mutate(journaltitle = case_when(key == 21 ~ "Honours Thesis",
-                                    TRUE ~ journaltitle))
+              year,
+              key = row_number())
   
   pubs
   

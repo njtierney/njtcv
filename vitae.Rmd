@@ -9,9 +9,10 @@ twitter: nj_tierney
 github: njtierney
 date: "`r format(Sys.time(), '%B %Y')`"
 output: vitae::awesomecv
+knit: bookdown::render_book
 csl: "csl/apa6-cv.csl"
 nocite: "@*"
-bibliography_articles: "bib/articles.bib"
+bibliography_articles: "bib/njt-articles.bib"
 ---
 
 ```{r setup, include=FALSE}
@@ -23,6 +24,8 @@ knitr::opts_chunk$set(echo = FALSE,
 ```{r loadd-drake, include = FALSE}
 library(drake)
 library(magrittr)
+library(vitae)
+library(glue)
 loadd(awards)
 loadd(communication)
 loadd(education)
@@ -30,6 +33,7 @@ loadd(employment)
 loadd(grants)
 loadd(memberships)
 loadd(publications)
+loadd(write_pubs)
 loadd(software)
 loadd(stars)
 loadd(service)
@@ -74,8 +78,23 @@ software %>% # would be neat to add extra information on stars and downloads
 
 ## Selected Publications
 
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+::: {#refs_articles}
+:::
+\endgroup
+
+
 ```{r pubs}
-# pubs <- bibliography_entries("bib/articles.bib")
+# bibliography_entries(file = "bib/test-my-articles.bib")
+# bibliography_entries("curie.bib")
+# bibliography_entries("bib/articles.bib") 
+#     mutate(journaltitle = case_when(key == 21 ~ "Honours Thesis",
+#                                     TRUE ~ journaltitle))
+# pubs <- bibliography_entries("bib/articles.bib") %>% 
+#   select(-`title-short`)
 # pubs
 ```
 
@@ -143,18 +162,3 @@ teaching
 ```{r workshops}
 workshops
 ```
-
-
-\newpage
-
-# Technical skills
-
-* R
-* STATA
-* greta
-* LaTeX
-* Git + GitHub
-* Bayesian Statistics
-* Data Visualisation
-* Exploratory Data Analysis
-* Reproducible Reporting
