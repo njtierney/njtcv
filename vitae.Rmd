@@ -96,6 +96,18 @@ software_stars_dl %>%
                    .protect = FALSE)
 ```
 
+# Employment
+
+```{r employment}
+employment %>% 
+  detailed_entries(what = with,
+                   when = when,
+                   with = what,
+                   where = where,
+                   why = why)
+```
+
+
 # Published Articles
 
 \begingroup
@@ -136,10 +148,19 @@ software_stars_dl %>%
 :::
 \endgroup
 
-# In Preparation
+# Papers in Preparation
 
 ```{r paper-in-prep}
-paper_in_prep
+paper_in_prep %>% 
+  mutate(detailed_with = embolden_name(with)) %>% 
+  detailed_entries(
+    # what = with, 
+    detailed_with,
+                   when = when, 
+                   with = what, 
+                   where = where, 
+                   why = why,
+    .protect = FALSE)
 ```
 
 # Presentations
@@ -177,12 +198,11 @@ grants
 
 ```{r award}
 awards %>% 
-  mutate(what = "") %>%
     # detailed_entries(what, when, with, where, why)
-    detailed_entries(when = when, 
+    detailed_entries(what = why,
+                     when = when, 
                      with = with, 
-                     where = where, 
-                     why = why)
+                     where = where)
 
 ```
 
@@ -209,11 +229,21 @@ communication
 # Teaching
 
 ```{r teaching}
-teaching
+teaching %>% 
+  detailed_entries(what = what, 
+                   when = when, 
+                   with = with, 
+                   where = where, 
+                   why = why)
 ```
 
 # Workshops
 
 ```{r workshops}
-workshops
+workshops %>% 
+  detailed_entries(what = with, 
+                   when = when, 
+                   with = what, 
+                   where = where, 
+                   why = why)
 ```

@@ -9,6 +9,6 @@
 get_workshops <- function() {
 
   read_cv_sheet(sheet = "workshop") %>% 
-    detailed_entries(what, when, with, where, why)
+    fill(-why) 
 
 }

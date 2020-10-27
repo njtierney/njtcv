@@ -4,9 +4,9 @@ function Block (el)
 
       if el.content[k].t == "Str" and el.content[k].text == "Tierney,"
       and el.content[k+1].t == "Space"
-      and el.content[k+2].t == "Str" and el.content[k+2].text:find("^A.") then
+      and el.content[k+2].t == "Str" and el.content[k+2].text:find("^Nicholas") then
 
-          local _,e = el.content[k+2].text:find("^A.")
+          local _,e = el.content[k+2].text:find("^Nicholas")
           local rest = el.content[k+2].text:sub(e+1)  -- empty if e+1>length
           el.content[k] = pandoc.Strong { pandoc.Str("Tierney, Nicholas J.") }
           el.content[k+1] = pandoc.Str(rest)

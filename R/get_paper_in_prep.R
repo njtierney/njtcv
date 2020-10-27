@@ -9,7 +9,6 @@
 get_paper_in_prep <- function() {
 
   read_cv_sheet(sheet = "papers-in-prep") %>% 
-    filter(include) %>% 
-    detailed_entries(what, when, with, where, why)
+    filter(include) 
 
 }
