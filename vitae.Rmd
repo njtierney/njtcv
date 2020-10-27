@@ -12,6 +12,7 @@ knit: bookdown::render_book
 csl: "csl/apa6-cv.csl"
 nocite: "@*"
 bibliography_articles: "bib/njt-articles.bib"
+bibliography_preprints: "bib/njt-pre-prints.bib"
 ---
 
 ```{r setup, include=FALSE}
@@ -70,20 +71,24 @@ education
 software_stars_dl %>% 
   arrange(-when) %>% 
   mutate(detailed_why = pmap(
-    .l = list(why = why,
+    .l = list(
               stars = stars, 
               downloads = downloads),
     .f = function(why, stars, downloads){
       if (downloads == 0){
-        return(c(why,
+        return(c(
                  paste0(stars, " stars")))
                }
-      c(why,
+      c(
         paste0(stars, " stars"),
         paste0(scales::comma(downloads), " downloads"))
                       }
     )) %>% 
-  detailed_entries(what = with,
+  detailed_entries(
+    what = why,
+                   # what = map(detailed_why, 
+                   #            glue_collapse,
+                   #            sep = " \\newline ",
                    when = when,
                    with = what,
                    where = where,
@@ -91,9 +96,7 @@ software_stars_dl %>%
                    .protect = FALSE)
 ```
 
-# Research
-
-## Selected Publications
+# Published Articles
 
 \begingroup
 \setlength{\parindent}{-0.5in}
@@ -123,27 +126,44 @@ software_stars_dl %>%
 # pubs
 ```
 
-## Papers in Preparation
+# Preprints
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+::: {#refs_preprints}
+:::
+\endgroup
+
+# In Preparation
 
 ```{r paper-in-prep}
 paper_in_prep
 ```
 
-
-## Selected Presentations
+# Presentations
 
 ```{r talks}
 # make the talk in bold, add the speaker type in brackets after title
-# 
-talks
+talks %>% 
+  mutate(why = as.character(why)) %>% 
+  detailed_entries(what = glue("{with} ({why})"), 
+                   when = when, 
+                   with = what, 
+                   where = where)
 ```
 
-## Posters
+# Posters
 
 ```{r posters}
 # make the talk in bold, add the speaker type in brackets after title
-
-posters
+posters %>% 
+  mutate(why = as.character(why)) %>% 
+  detailed_entries(what = why, 
+                   when = when, 
+                   with = what, 
+                   where = where) 
 ```
 
 # Grants
@@ -156,7 +176,14 @@ grants
 # Awards
 
 ```{r award}
-awards
+awards %>% 
+  mutate(what = "") %>%
+    # detailed_entries(what, when, with, where, why)
+    detailed_entries(when = when, 
+                     with = with, 
+                     where = where, 
+                     why = why)
+
 ```
 
 # Service
@@ -165,15 +192,15 @@ awards
 service
 ```
 
-# Professional Experience
+<!-- # Professional Experience -->
 
-## Invited Academic
+# Invited Academic
 
 ```{r invited-academic}
 invited_academic
 ```
 
-## Communication
+# Communication
 
 ```{r communication}
 communication
@@ -181,13 +208,11 @@ communication
 
 # Teaching
 
-## University
-
 ```{r teaching}
 teaching
 ```
 
-## Workshops
+# Workshops
 
 ```{r workshops}
 workshops

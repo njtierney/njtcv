@@ -8,7 +8,7 @@ function Block (el)
 
           local _,e = el.content[k+2].text:find("^A.")
           local rest = el.content[k+2].text:sub(e+1)  -- empty if e+1>length
-          el.content[k] = pandoc.Strong { pandoc.Str("Tierney, N.") }
+          el.content[k] = pandoc.Strong { pandoc.Str("Tierney, Nicholas J.") }
           el.content[k+1] = pandoc.Str(rest)
           table.remove(el.content, k+2)  -- safe? another way would be to set element k+2 to Str("")
           -- no real need to skip ipairs items here

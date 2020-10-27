@@ -10,7 +10,6 @@
 get_talks <- function() {
 
   read_cv_sheet(sheet = "talks") %>% 
-    filter(include) %>% 
-    detailed_entries(what, when, with, where, why)
+    filter(include)
 
 }

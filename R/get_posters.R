@@ -9,7 +9,6 @@
 get_posters <- function() {
 
   read_cv_sheet(sheet = "posters") %>% 
-    filter(include) %>% 
-    detailed_entries(what, when, with, where, why)
+    filter(include) 
 
 }
