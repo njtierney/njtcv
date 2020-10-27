@@ -10,6 +10,7 @@ the_plan <-
     write_pubs = write_publications(publications),
     software = get_software(),
     stars = get_stars(software),
+    software_stars_dl = add_stars_downloads(software, stars),
     service = get_service(),
     talks = get_talks(),
     invited_academic = get_invited_academic(),
@@ -20,7 +21,9 @@ the_plan <-
     
     # I keep needing to un/comment this, which doesn't make sense
     vitae = target(
+      
       command = {
+        file_in("bib/njt-articles.bib")
         rmarkdown::render(knitr_in("vitae.Rmd"))
         file_out("vitae.pdf")
       }

@@ -6,30 +6,30 @@ build_url <- function(pkg,
   )
 }
 
-pkg_on_cran <- function(pkg){
+pkgs_on_cran <- function(pkgs){
   avail <- as_tibble(available.packages(),
                      .name_repair = janitor::make_clean_names)
-  pkg %in% avail$package
+  pkgs %in% avail$package
 }
 
-
-pkg_downloads <- function(pkg,
-                          start_date = "2015-01-01",
-                          end_date = Sys.Date()){
-  
-  on_cran <- pkg_on_cran(pkg)
-  
-  if (!on_cran) {
-    stop("Package, ", pkg, " not on CRAN")
-  }
-  
-  build_url(pkg,
-            start_date = start_date,
-            end_date = end_date) %>% 
+scrape_downloads <- function(x){
+  x %>% 
     bow() %>% 
     scrape() %>% 
     pluck(1) %>% 
     pluck("downloads")
+}
+
+
+pkgs_downloads <- function(pkgs,
+                          start_date = "2015-01-01",
+                          end_date = Sys.Date()){
+  
+  pkg_urls <- build_url(pkgs,
+                        start_date = start_date,
+                        end_date = end_date)
+  
+  map_dbl(pkg_urls, scrape_downloads)
   
 }
 

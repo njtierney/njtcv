@@ -33,7 +33,7 @@ loadd(grants)
 loadd(memberships)
 loadd(publications)
 loadd(write_pubs)
-loadd(software)
+loadd(software_stars_dl)
 loadd(stars)
 loadd(service)
 loadd(invited_academic)
@@ -56,7 +56,7 @@ RefManageR::BibOptions(
 )
 ```
 
-# Eduction
+# Education
 
 ```{r print-education}
 education
@@ -65,12 +65,30 @@ education
 # Software
 
 ```{r print-software}
-software %>% # would be neat to add extra information on stars and downloads
-    brief_entries(what = glue("\\textbf{<what>}: <with> \\newline <why>", 
-                              .open = "<", 
-                              .close = ">"), 
-                  when = when, 
-                  .protect = FALSE)
+# arrange chronologically
+# and add star / download count
+software_stars_dl %>% 
+  arrange(-when) %>% 
+  mutate(detailed_why = pmap(
+    .l = list(why = why,
+              stars = stars, 
+              downloads = downloads),
+    .f = function(why, stars, downloads){
+      if (downloads == 0){
+        return(c(why,
+                 paste0(stars, " stars")))
+               }
+      c(why,
+        paste0(stars, " stars"),
+        paste0(scales::comma(downloads), " downloads"))
+                      }
+    )) %>% 
+  detailed_entries(what = with,
+                   when = when,
+                   with = what,
+                   where = where,
+                   why = detailed_why,
+                   .protect = FALSE)
 ```
 
 # Research
@@ -85,8 +103,16 @@ software %>% # would be neat to add extra information on stars and downloads
 :::
 \endgroup
 
+```{r}
+# TeXCheckR::bib2DT(file.bib = "bib/njt-articles.bib") %>% 
+#   as_tibble() %>% 
+#   View()
+```
+
+
 
 ```{r pubs}
+# TODO add pre-print vs publications
 # bibliography_entries(file = "bib/test-my-articles.bib")
 # bibliography_entries("curie.bib")
 # bibliography_entries("bib/articles.bib") 
@@ -107,18 +133,23 @@ paper_in_prep
 ## Selected Presentations
 
 ```{r talks}
+# make the talk in bold, add the speaker type in brackets after title
+# 
 talks
 ```
 
 ## Posters
 
 ```{r posters}
+# make the talk in bold, add the speaker type in brackets after title
+
 posters
 ```
 
 # Grants
 
 ```{r grant}
+# fix dollar signs
 grants
 ```
 
