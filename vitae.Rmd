@@ -143,7 +143,27 @@ read_bib_distinct("bib/njt-articles.bib") %>%
 
 # Book Chapters
 
-
+```{r bookchapter}
+read_bib_distinct("bib/njt-book-chapters.bib") %>% 
+  drop_na(title) %>% 
+  mutate(detailed_with = embolden_name(author, 
+                                       name = "Tierney, Nicholas J."),
+         title = remove_curlies(title),
+         booktitle = remove_curlies(booktitle),
+         year = as.integer(year)) %>% 
+  arrange(-year) %>% 
+  mutate(year = as.character(year)) %>% 
+  select(-c(date:annote),
+         -c(chapter:edition),
+         -c(howpublished:organization)) %>% 
+  detailed_entries(
+    what = detailed_with,
+    when = year, 
+    with = title, 
+    where = booktitle,
+    .protect = FALSE
+  ) 
+```
 
 # Preprints
 
@@ -217,6 +237,7 @@ grants
 
 ```{r award}
 awards %>% 
+  arrange(-when) %>% 
     # detailed_entries(what, when, with, where, why)
     detailed_entries(what = why,
                      when = when, 
@@ -228,7 +249,12 @@ awards %>%
 # Service
 
 ```{r service}
-service
+service %>% 
+  detailed_entries(what = what, 
+                   when = when, 
+                   with = with, 
+                   where = where, 
+                   why = why)
 ```
 
 <!-- # Professional Experience -->

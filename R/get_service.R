@@ -9,6 +9,6 @@
 get_service <- function() {
 
   read_cv_sheet(sheet = "service") %>% 
-    detailed_entries(what, when, with, where, why)
+    filter(include)
 
 }
