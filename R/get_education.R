@@ -9,7 +9,6 @@
 get_education <- function() {
 
   read_cv_sheet(sheet = "education") %>% 
-    fill(-why) %>%
-    detailed_entries(what, when, with, where, why)
+    fill(-why)
 
 }
