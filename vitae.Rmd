@@ -112,6 +112,8 @@ employment %>%
                    why = why)
 ```
 
+\newpage
+
 # Published Articles
 
 ```{r journals}
