@@ -30,14 +30,17 @@ loadd(grants)
 loadd(memberships)
 loadd(publications)
 loadd(write_pubs)
-loadd(software_stars_dl)
+loadd(prepared_software)
 loadd(stars)
 loadd(service)
 loadd(invited_academic)
 loadd(paper_in_prep)
+loadd(published_articles)
 loadd(posters)
 loadd(teaching)
 loadd(workshops)
+loadd(book_chapters)
+loadd(preprints)
 loadd(talks)
 ```
 
@@ -58,27 +61,8 @@ education %>%
 ```{r print-software}
 # arrange chronologically
 # and add star / download count
-software_stars_dl %>% 
-  arrange(-when) %>% 
-  mutate(detailed_why = pmap(
-    .l = list(
-              stars = stars, 
-              downloads = downloads),
-    .f = function(why, stars, downloads){
-      if (downloads == 0){
-        return(c(
-                 paste0(stars, " stars")))
-               }
-      c(
-        paste0(stars, " stars"),
-        paste0(scales::comma(downloads), " downloads"))
-                      }
-    )) %>% 
-  detailed_entries(
-    what = why,
-                   # what = map(detailed_why, 
-                   #            glue_collapse,
-                   #            sep = " \\newline ",
+prepared_software %>% 
+  detailed_entries(what = why,
                    when = when,
                    with = what,
                    where = where,
@@ -116,21 +100,7 @@ invited_academic
 
 ```{r journals}
 # fix capitalisations 
-journals <- read_bib("bib/njt-articles.bib") %>% 
-  filter(str_detect(bib_orig, "journal ")) %>% 
-  mutate(journal = subset_remove_curlies(bib_orig)) %>% 
-  select(title, journal)
-
-read_bib_distinct("bib/njt-articles.bib") %>% 
-  left_join(journals, by = "title") %>% 
-  mutate(title = remove_curlies(title),
-         title = toTitleCase(title),
-         detailed_with = embolden_name(author, 
-                                       name = "Tierney, Nicholas J."),
-         year = as.integer(year)) %>% 
-  drop_na(title) %>% 
-  arrange(-year) %>% 
-  mutate(year = as.character(year)) %>%
+published_articles %>%
   detailed_entries(
     what = detailed_with,
     when = year, 
@@ -144,20 +114,7 @@ read_bib_distinct("bib/njt-articles.bib") %>%
 # Book Chapters
 
 ```{r bookchapter}
-read_bib_distinct("bib/njt-book-chapters.bib") %>% 
-  drop_na(title) %>% 
-  mutate(detailed_with = embolden_name(author, 
-                                       name = "Tierney, Nicholas J."),
-         title = remove_curlies(title),
-         title = toTitleCase(title),
-         booktitle = remove_curlies(booktitle),
-         booktitle = toTitleCase(booktitle),
-         year = as.integer(year)) %>% 
-  arrange(-year) %>% 
-  mutate(year = as.character(year)) %>% 
-  select(-c(date:annote),
-         -c(chapter:edition),
-         -c(howpublished:organization)) %>% 
+book_chapters %>% 
   detailed_entries(
     what = detailed_with,
     when = year, 
@@ -170,15 +127,7 @@ read_bib_distinct("bib/njt-book-chapters.bib") %>%
 # Preprints
 
 ```{r preprints-df}
-read_bib_distinct("bib/njt-pre-prints.bib") %>% 
-  mutate(detailed_with = embolden_name(author, 
-                                       name = "Tierney, Nicholas J."),
-         title = remove_curlies(title),
-         title = toTitleCase(title),
-         year = as.integer(year)) %>% 
-  drop_na(title) %>% 
-  arrange(-year) %>% 
-  mutate(year = as.character(year)) %>% 
+preprints %>% 
   detailed_entries(
     what = detailed_with,
     when = year, 
@@ -196,9 +145,7 @@ read_bib_distinct("bib/njt-pre-prints.bib") %>%
 paper_in_prep %>% 
   mutate(detailed_with = embolden_name(with),
          what = toTitleCase(what)) %>% 
-  detailed_entries(
-    # what = with, 
-    detailed_with,
+  detailed_entries(what = detailed_with,
                    when = when, 
                    with = what, 
                    where = where, 
