@@ -8,7 +8,9 @@ email: "nicholas.tierney@gmail.com"
 twitter: nj_tierney
 github: njtierney
 date: "`r format(Sys.time(), '%B %Y')`"
-knit: bookdown::render_book
+output: 
+  vitae::awesomecv:
+    keep_tex: true
 ---
 
 ```{r setup, include=FALSE}
