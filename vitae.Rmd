@@ -1,8 +1,8 @@
 ---
 name: Nicholas
 surname: Tierney
-position: "Lecturer"
-address: "Department of Econometrics and Business Statistics"
+position: "Research Software Engineer"
+address: "Telethon Kids Institute"
 www: njtierney.com
 email: "nicholas.tierney@gmail.com"
 twitter: nj_tierney
