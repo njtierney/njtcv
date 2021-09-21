@@ -83,8 +83,6 @@ employment %>%
                    why = why)
 ```
 
-\newpage
-
 # Grants
 
 ```{r grant}
@@ -198,8 +196,6 @@ awards %>%
                      where = where)
 
 ```
-
-\newpage
 
 # Service
 
