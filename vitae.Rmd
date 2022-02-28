@@ -58,20 +58,6 @@ education %>%
                      why = why)
 ```
 
-# Software
-
-```{r print-software}
-# arrange chronologically
-# and add star / download count
-prepared_software %>% 
-  detailed_entries(what = why,
-                   when = when,
-                   with = what,
-                   where = where,
-                   why = detailed_why,
-                   .protect = FALSE)
-```
-
 # Employment
 
 ```{r employment}
@@ -81,19 +67,6 @@ employment %>%
                    with = what,
                    where = where,
                    why = why)
-```
-
-# Grants
-
-```{r grant}
-# fix dollar signs
-grants
-```
-
-# Invited Academic
-
-```{r invited-academic}
-invited_academic
 ```
 
 # Published Articles
@@ -111,6 +84,7 @@ published_articles %>%
   )
 ```
 
+
 # Book Chapters
 
 ```{r bookchapter}
@@ -124,33 +98,60 @@ book_chapters %>%
   ) 
 ```
 
-# Preprints
+# Grants
+
+```{r grant}
+# fix dollar signs
+grants
+```
+
+# Invited Academic
+
+```{r invited-academic}
+invited_academic
+```
+
+# Software
+
+```{r print-software}
+# arrange chronologically
+# and add star / download count
+prepared_software %>% 
+  detailed_entries(what = why,
+                   when = when,
+                   with = what,
+                   where = where,
+                   why = detailed_why,
+                   .protect = FALSE)
+```
+
+<!-- # Preprints -->
 
 ```{r preprints-df}
-preprints %>% 
-  detailed_entries(
-    what = detailed_with,
-    when = year, 
-    with = title, 
-    where = url,
-    .protect = FALSE
-  ) 
-  
+# preprints %>% 
+#   detailed_entries(
+#     what = detailed_with,
+#     when = year, 
+#     with = title, 
+#     where = url,
+#     .protect = FALSE
+#   ) 
+#   
 ```
 
 
-# Papers in Preparation
+<!-- # Papers in Preparation -->
 
 ```{r paper-in-prep}
-paper_in_prep %>% 
-  mutate(detailed_with = embolden_name(with),
-         what = toTitleCase(what)) %>% 
-  detailed_entries(what = detailed_with,
-                   when = when, 
-                   with = what, 
-                   where = where, 
-                   why = why,
-    .protect = FALSE)
+# paper_in_prep %>% 
+#   mutate(detailed_with = embolden_name(with),
+#          what = toTitleCase(what)) %>% 
+#   detailed_entries(what = detailed_with,
+#                    when = when, 
+#                    with = what, 
+#                    where = where, 
+#                    why = why,
+#     .protect = FALSE)
 ```
 
 # Presentations
@@ -161,7 +162,7 @@ paper_in_prep %>%
 # provide some text of this, detail the countries/events I've spoken at.
 # make the talk in bold, add the speaker type in brackets after title
 talks %>% 
-  filter(year(when) >= 2019) %>% 
+  filter(year(when) >= 2018) %>% 
   mutate(why = as.character(why),
          what = toTitleCase(what)) %>% 
   detailed_entries(what = glue("{with} ({why})"), 
@@ -170,7 +171,7 @@ talks %>%
                    where = where)
 ```
 
-Prior to 2019, I have delivered a keynote presentation in Seoul, South Korea, and invited seminars and talks in Australia, USA, Switzerland, France, Belgium, and England.
+<!-- Prior to 2019, I have delivered a keynote presentation in Seoul, South Korea, and invited seminars and talks in Australia, USA, Switzerland, France, Belgium, and England. -->
 
 <!-- # Posters -->
 
