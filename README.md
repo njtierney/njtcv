@@ -16,9 +16,9 @@ To create the CV, run:
 
 ```r
 # optional to wipe data clean re GH stars + downloads
-# drake::clean()
+# targets::tar_destroy()
 
 # create the CV
-capsule::run(drake::r_make())
+capsule::run(targets::tar_make())
 ```
 
