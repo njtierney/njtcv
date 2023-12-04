@@ -8,7 +8,7 @@ build_url <- function(pkg,
 
 pkgs_on_cran <- function(pkgs){
   avail <- as_tibble(available.packages(),
-                     .name_repair = janitor::make_clean_names)
+                     .name_repair = make_clean_names)
   pkgs %in% avail$package
 }
 
