@@ -39,6 +39,9 @@ rsconnect/
 .drake
 .drake_history
 
+# targets
+_targets
+
 # html
 *.html
 
