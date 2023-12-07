@@ -7,7 +7,7 @@
 ##' @return
 ##' @author Nicholas Tierney
 ##' @export
-tidy_preprints <- function(preprints = file_in("bib/njt-pre-prints.bib")) {
+tidy_preprints <- function(preprints = "bib/njt-pre-prints.bib") {
 
   read_bib_distinct(preprints) %>% 
     mutate(detailed_with = embolden_name(author, 

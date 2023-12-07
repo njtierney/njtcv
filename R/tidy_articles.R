@@ -7,7 +7,7 @@
 ##' @return
 ##' @author Nicholas Tierney
 ##' @export
-tidy_articles <- function(bibfile = file_in("bib/njt-articles.bib")) {
+tidy_articles <- function(bibfile = "bib/njt-articles.bib") {
 
   journals <- read_bib(bibfile) %>% 
     filter(str_detect(bib_orig, "journal ")) %>% 

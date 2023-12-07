@@ -10,10 +10,14 @@
 write_publications <- function(publications) {
 
   dir_create(path = "bib")
-  publications %>% 
+  
+  write_pub <-publications %>% 
     filter(!grepl("^CRAN Task", title),
            year != 2012) %>% 
-    as.BibEntry() %>% 
-    WriteBib("bib/articles.bib")
+    as.BibEntry()
+  
+  WriteBib(write_pub, "bib/articles.bib")
+  
+  names(file_exists("bib/articles.bib"))
 
 }

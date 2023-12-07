@@ -7,7 +7,7 @@
 ##' @return
 ##' @author Nicholas Tierney
 ##' @export
-tidy_book_chapters <- function(book_ch = file_in("bib/njt-book-chapters.bib")) {
+tidy_book_chapters <- function(book_ch = "bib/njt-book-chapters.bib") {
 
   read_bib_distinct(book_ch) %>% 
     drop_na(title) %>% 
