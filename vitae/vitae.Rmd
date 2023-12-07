@@ -206,7 +206,7 @@ awards %>%
 
 # Service
 
-I am an active member of the statistics and open source software communities. I have been an Associate Editor for the R Journal since 2021, served on the organising committee of UseR! in 2018, and was founding and principal organiser of the annual rOpenSci Ozunconference, from 2016 - 2018. I have been the organising chair of two university research groups, the Non‐Uniform Monash Business Analytics Team (NUMBAT) group at Monash, and the Bayesian Research and Applications Group (BRAG) at Queensland University of Technology. I have served with the Statistical Society of Australia since 2013, as young statistician representative of Queensland, assistant chair of biostatistics (2013-2016), and co-founded the section "Statistical Computing and Visualisation" with Di Cook in 2021.
+I am an active member of the statistics and open source software communities. I have been an Associate Editor for the R Journal since 2021, served on the organising committee of UseR! in 2018, and was founding and principal organiser of the annual rOpenSci Ozunconference, from 2016 - 2018. I have been the organising chair of two university research groups, the Non‐Uniform Monash Business Analytics Team (NUMBAT) group at Monash, and the Bayesian Research and Applications Group (BRAG) at Queensland University of Technology. I have served with the Statistical Society of Australia since 2013, as young statistician representative of Queensland, assistant chair of biostatistics (2013-2016), and co-founded the section "Statistical Computing and Visualisation" with Di Cook in 2021. I manage the adjudication of the annual student software award provided by this section.
 
 ```{r service, eval = FALSE}
 # could make this a small paragraph
