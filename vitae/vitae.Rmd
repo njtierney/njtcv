@@ -2,10 +2,9 @@
 name: Nicholas
 surname: Tierney
 position: "Research Software Engineer"
-address: "Telethon Kids Institute"
+address: "The Kids Research Institute Australia"
 www: njtierney.com
 email: "nicholas.tierney@gmail.com"
-twitter: nj_tierney
 github: njtierney
 date: "`r format(Sys.time(), '%B %Y')`"
 output: 
@@ -13,14 +12,17 @@ output:
     keep_tex: true
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
 
-```{r load-targets, include = FALSE}
-library(magrittr)
+```{r}
+#| label: load-targets
+#| include: false
 library(vitae)
 library(glue)
 library(targets)
@@ -55,8 +57,9 @@ with_dir(here(), {
 
 # Education
 
-```{r print-education}
-education %>% 
+```{r}
+#| label: print-education
+education |> 
     detailed_entries(what = with, 
                      when = when, 
                      with = what, 
@@ -66,8 +69,9 @@ education %>%
 
 # Employment
 
-```{r employment}
-employment %>% 
+```{r}
+#| label: employment
+employment |> 
   detailed_entries(what = with,
                    when = when,
                    with = what,
@@ -77,9 +81,10 @@ employment %>%
 
 # Published Articles
 
-```{r journals}
+```{r}
+#| label: journals
 # fix capitalisations 
-published_articles %>%
+published_articles |>
   detailed_entries(
     what = detailed_with,
     when = year, 
@@ -93,8 +98,9 @@ published_articles %>%
 
 <!-- # Book Chapters -->
 
-```{r bookchapter}
-# book_chapters %>% 
+```{r}
+#| label: bookchapter
+# book_chapters |> 
 #   detailed_entries(
 #     what = detailed_with,
 #     when = year, 
@@ -106,23 +112,26 @@ published_articles %>%
 
 # Grants
 
-```{r grant}
+```{r}
+#| label: grant
 # fix dollar signs
 grants
 ```
 
 # Invited Academic
 
-```{r invited-academic}
+```{r}
+#| label: invited-academic
 invited_academic
 ```
 
 # Software
 
-```{r print-software}
+```{r}
+#| label: print-software
 # arrange chronologically
 # and add star / download count
-prepared_software %>% 
+prepared_software |> 
   detailed_entries(what = why,
                    when = when,
                    with = what,
@@ -133,8 +142,9 @@ prepared_software %>%
 
 <!-- # Preprints -->
 
-```{r preprints-df}
-# preprints %>% 
+```{r}
+#| label: preprints-df
+# preprints |> 
 #   detailed_entries(
 #     what = detailed_with,
 #     when = year, 
@@ -148,10 +158,11 @@ prepared_software %>%
 
 <!-- # Papers in Preparation -->
 
-```{r paper-in-prep}
-# paper_in_prep %>% 
+```{r}
+#| label: paper-in-prep
+# paper_in_prep |> 
 #   mutate(detailed_with = embolden_name(with),
-#          what = toTitleCase(what)) %>% 
+#          what = toTitleCase(what)) |> 
 #   detailed_entries(what = detailed_with,
 #                    when = when, 
 #                    with = what, 
@@ -162,15 +173,16 @@ prepared_software %>%
 
 # Presentations
 
-```{r talks}
+```{r}
+#| label: talks
 # just from 2019
 # then provide a list of other places I have spoken
 # provide some text of this, detail the countries/events I've spoken at.
 # make the talk in bold, add the speaker type in brackets after title
-talks %>% 
-  filter(year(when) >= 2018) %>% 
+talks |> 
+  filter(year(when) >= 2018) |> 
   mutate(why = as.character(why),
-         what = toTitleCase(what)) %>% 
+         what = toTitleCase(what)) |> 
   detailed_entries(what = glue("{with} ({why})"), 
                    when = when, 
                    with = what, 
@@ -181,10 +193,11 @@ talks %>%
 
 <!-- # Posters -->
 
-```{r posters}
+```{r}
+#| label: posters
 # can drop posts completely
-# posters %>% 
-#   mutate(why = as.character(why)) %>% 
+# posters |> 
+#   mutate(why = as.character(why)) |> 
 #   detailed_entries(what = why, 
 #                    when = when, 
 #                    with = what, 
@@ -193,9 +206,10 @@ talks %>%
 
 # Awards
 
-```{r award}
-awards %>% 
-  arrange(-when) %>% 
+```{r}
+#| label: award
+awards |> 
+  arrange(-when) |> 
     # detailed_entries(what, when, with, where, why)
     detailed_entries(what = why,
                      when = when, 
@@ -208,9 +222,11 @@ awards %>%
 
 I am an active member of the statistics and open source software communities. I have been an Associate Editor for the R Journal since 2021, served on the organising committee of UseR! in 2018, and was founding and principal organiser of the annual rOpenSci Ozunconference, from 2016 - 2018. I have been the organising chair of two university research groups, the Non‐Uniform Monash Business Analytics Team (NUMBAT) group at Monash, and the Bayesian Research and Applications Group (BRAG) at Queensland University of Technology. I have served with the Statistical Society of Australia since 2013, as young statistician representative of Queensland, assistant chair of biostatistics (2013-2016), and co-founded the section "Statistical Computing and Visualisation" with Di Cook in 2021. I manage the adjudication of the annual student software award provided by this section.
 
-```{r service, eval = FALSE}
+```{r}
+#| label: service
+#| eval: false
 # could make this a small paragraph
-service %>% 
+service |> 
   detailed_entries(what = what, 
                    when = when, 
                    with = with, 
@@ -221,7 +237,8 @@ service %>%
 
 <!-- # Communication -->
 
-```{r communication}
+```{r}
+#| label: communication
 # do I need this?
 # could drop this
 # communication
@@ -229,8 +246,9 @@ service %>%
 
 # Teaching
 
-```{r teaching}
-teaching %>% 
+```{r}
+#| label: teaching
+teaching |> 
   detailed_entries(what = with, 
                    when = when, 
                    with = what, 
@@ -240,8 +258,9 @@ teaching %>%
 
 # Workshops
 
-```{r workshops}
-workshops %>% 
+```{r}
+#| label: workshops
+workshops |> 
   detailed_entries(what = with, 
                    when = when, 
                    with = what, 
