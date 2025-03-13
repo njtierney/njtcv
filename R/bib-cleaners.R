@@ -1,9 +1,9 @@
 read_bib <- function(path){
-  bib2DT(file.bib = path) %>% 
+  bib2DT(file.bib = path) |> 
     as_tibble()
 }
 read_bib_distinct <- function(path){
-  read_bib(path) %>% 
+  read_bib(path) |> 
     distinct(title, .keep_all = TRUE)
 }
 
@@ -14,6 +14,6 @@ remove_curlies <- function(string){
 
 subset_remove_curlies <- function(string){
   str_extract(string = string,
-              pattern = "\\{(.*?)\\}") %>% 
+              pattern = "\\{(.*?)\\}") |> 
     str_remove_all("\\{|\\}")
 }

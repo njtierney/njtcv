@@ -13,10 +13,10 @@ pkgs_on_cran <- function(pkgs){
 }
 
 scrape_downloads <- function(x){
-  x %>% 
-    bow() %>% 
-    scrape() %>% 
-    pluck(1) %>% 
+  x |> 
+    bow() |> 
+    scrape() |> 
+    pluck(1) |> 
     pluck("downloads")
 }
 

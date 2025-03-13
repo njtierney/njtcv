@@ -8,7 +8,7 @@
 ##' @export
 get_service <- function() {
 
-  read_cv_sheet(sheet = "service") %>% 
+  read_cv_sheet(sheet = "service") |> 
     filter(include)
 
 }

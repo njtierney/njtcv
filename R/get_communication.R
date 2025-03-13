@@ -9,8 +9,8 @@
 ##' @export
 get_communication <- function() {
 
-  read_cv_sheet(sheet = "communication") %>% 
-    fill(-why) %>% 
+  read_cv_sheet(sheet = "communication") |> 
+    fill(-why) |> 
     detailed_entries(what, when, with, where, why)
 
 }

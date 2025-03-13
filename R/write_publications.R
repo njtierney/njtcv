@@ -11,9 +11,9 @@ write_publications <- function(publications) {
 
   dir_create(path = "bib")
   
-  write_pub <-publications %>% 
+  write_pub <-publications |> 
     filter(!grepl("^CRAN Task", title),
-           year != 2012) %>% 
+           year != 2012) |> 
     as.BibEntry()
   
   WriteBib(write_pub, "bib/articles.bib")

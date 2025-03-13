@@ -8,7 +8,7 @@
 ##' @export
 get_software <- function() {
 
-  read_cv_sheet(sheet = "software") %>% 
+  read_cv_sheet(sheet = "software") |> 
     filter(include)
 
 }

@@ -9,8 +9,8 @@
 ##' @export
 tidy_publications <- function() {
 
-  pubs <- get_publications("o4eVsQEAAAAJ&hl") %>% 
-    distinct(title, .keep_all = TRUE) %>%
+  pubs <- get_publications("o4eVsQEAAAAJ&hl") |> 
+    distinct(title, .keep_all = TRUE) |>
     transmute(bibtype = "Article", 
               author = as.character(author),
               title = as.character(title),

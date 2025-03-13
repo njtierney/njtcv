@@ -8,7 +8,7 @@
 ##' @export
 get_education <- function() {
 
-  read_cv_sheet(sheet = "education") %>% 
+  read_cv_sheet(sheet = "education") |> 
     fill(-why)
 
 }

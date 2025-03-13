@@ -8,7 +8,7 @@
 ##' @export
 get_employment <- function() {
 
-  read_cv_sheet(sheet = "employment") %>% 
+  read_cv_sheet(sheet = "employment") |> 
     filter(include)
 
 }

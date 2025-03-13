@@ -8,7 +8,7 @@
 ##' @export
 get_posters <- function() {
 
-  read_cv_sheet(sheet = "posters") %>% 
+  read_cv_sheet(sheet = "posters") |> 
     filter(include) 
 
 }

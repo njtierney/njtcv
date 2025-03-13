@@ -9,8 +9,8 @@
 ##' @export
 get_invited_academic <- function() {
 
-  read_cv_sheet(sheet = "invited-academic") %>% 
-    fill(-why) %>%
+  read_cv_sheet(sheet = "invited-academic") |> 
+    fill(-why) |>
     detailed_entries(what, when, with, where, why)
 
 }

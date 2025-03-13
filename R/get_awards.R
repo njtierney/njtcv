@@ -7,6 +7,6 @@
 ##' @author Nicholas Tierney
 ##' @export
 get_awards <- function() {
-  read_cv_sheet(sheet = "awards") %>% 
+  read_cv_sheet(sheet = "awards") |> 
     fill(-why) 
 }

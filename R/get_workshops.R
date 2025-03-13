@@ -8,8 +8,8 @@
 ##' @export
 get_workshops <- function() {
 
-  read_cv_sheet(sheet = "workshop") %>% 
-    filter(include) %>% 
+  read_cv_sheet(sheet = "workshop") |> 
+    filter(include) |> 
     fill(-why) 
 
 }

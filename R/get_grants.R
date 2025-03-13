@@ -8,8 +8,8 @@
 ##' @export
 get_grants <- function() {
 
-  read_cv_sheet(sheet = "grant") %>% 
-    fill(-why) %>%
+  read_cv_sheet(sheet = "grant") |> 
+    fill(-why) |>
     detailed_entries(what, when, with, where, why)
 
 }

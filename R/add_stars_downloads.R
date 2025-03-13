@@ -10,10 +10,10 @@
 ##' @export
 add_stars_downloads <- function(software, stars) {
 
-  software %>% 
-    left_join(stars, by = c("what" = "pkg")) %>% 
+  software |> 
+    left_join(stars, by = c("what" = "pkg")) |> 
     select(what:stars,
-           -repo) %>% 
+           -repo) |> 
     mutate(downloads = pkgs_downloads(what))
     
 

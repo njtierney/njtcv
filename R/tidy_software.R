@@ -9,8 +9,8 @@
 ##' @export
 tidy_software <- function(software_stars_dl) {
 
-  software_stars_dl %>% 
-    arrange(-when) %>% 
+  software_stars_dl |> 
+    arrange(-when) |> 
     mutate(detailed_why = pmap(
       .l = list(
         stars = stars, 

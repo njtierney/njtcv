@@ -9,7 +9,7 @@
 ##' @export
 get_talks <- function() {
 
-  read_cv_sheet(sheet = "talks") %>% 
+  read_cv_sheet(sheet = "talks") |> 
     filter(include)
 
 }
